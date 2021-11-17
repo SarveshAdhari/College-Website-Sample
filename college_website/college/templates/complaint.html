@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="user container-fluid">
+    <div class="user-details">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="update-form col-md-4">
+            <legend>Register A Complaint<hr></legend>
+            <div class="form-group">
+                {{ form.title.label(class="form-control-label") }}
+                <br>
+                {% if form.title.errors %}
+                    {{ form.title(class="form-control") }}
+                    <div class="invalid-input">
+                        {% for error in form.title.errors %}
+                            {{ error }} 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.title(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.body.label(class="form-control-label") }}
+                <br>
+                {% if form.body.errors %}
+                    {{ form.body(class="form-control") }}
+                    <div class="invalid-input">
+                        {% for error in form.body.errors %}
+                            {{ error }} 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.body(class="form-control",rows="10") }}
+                {% endif %}
+            </div>
+            {{ form.submit(class="btn btn-primary mt-3") }}
+            </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

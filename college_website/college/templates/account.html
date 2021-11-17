@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="user container-fluid">
+    <div class="user-details">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="update-form col-md-4">
+            <legend>Update Your Account<hr></legend>
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                <br>
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control") }}
+                    <div class="invalid-input">
+                        {% for error in form.email.errors %}
+                            {{ error }} 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+                <br>
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control") }}
+                    <div class="invalid-input">
+                        {% for error in form.username.errors %}
+                            {{ error }} 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control") }}
+                {% endif %}
+            </div>
+            {{ form.submit(class="btn btn-primary mt-3") }}
+            </div>
+    </form>
+    </div>
+</div>
+{% endblock %}
